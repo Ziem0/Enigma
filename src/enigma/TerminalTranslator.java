@@ -5,6 +5,8 @@ import exceptions.WrongKeyEx;
 import registry.ServiceProvider;
 import services.EnigmaService;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -51,11 +53,16 @@ public class TerminalTranslator implements Module {
 
         Scanner in = new Scanner(System.in);
 
-        while (in.hasNextLine()) {
-            if (encipher) {
-                System.out.println(enigma.encipher(in.nextLine()));
+        boolean quit = false;
+        while (!quit) {
+            System.out.println("Enter text you wanna decipher/encipher(q to quit):\r");
+            String input = in.nextLine();
+            if (input.equals("q")) {
+                quit = true;
+            } else if (encipher) {
+                System.out.println(enigma.encipher(input));
             } else {
-                System.out.println(enigma.decipher(in.nextLine()));
+                System.out.println(enigma.decipher(input));
             }
         }
         in.close();

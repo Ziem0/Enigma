@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ServiceRepository implements ServiceRegistry, ServiceProvider{
-    List<EnigmaService> services;
+    List<EnigmaService> services = new LinkedList<>();
 
 
     @Override
@@ -22,7 +22,7 @@ public class ServiceRepository implements ServiceRegistry, ServiceProvider{
         for (EnigmaService service : services) {
             result.add(service.getName());
         }
-        return null;
+        return result;
     }
 
     @Override
